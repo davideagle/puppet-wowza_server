@@ -1,31 +1,31 @@
 #
-#== Class: wowza::install
+#== Class: wowza_server::install
 #
-#Installs the wowza package and Java.
-class wowza::install {
-  $wowza_version = $::wowza::wowza_version
+#Installs the wowza_server package and Java.
+class wowza_server::install {
+  $wowza_server_version = $::wowza_server::wowza_server_version
 
   case $osfamily {
     'RedHat': {
-      include wowza::install::redhat
-      $wowza_packages     = $wowza::install::redhat::wowza_packages
-      $java_pakages       = $wowza::install::redhat::java_packages
+      include wowza_server::install::redhat
+      $wowza_server_packages     = $wowza_server::install::redhat::wowza_server_packages
+      $java_pakages       = $wowza_server::install::redhat::java_packages
     }
 
     'Debian': {
-      include wowza::install::debian
-      $wowza_packages     = $wowza::install::debian::wowza_packages
-      $java_pakages       = $wowza::install::debian::java_packages
+      include wowza_server::install::debian
+      $wowza_server_packages     = $wowza_server::install::debian::wowza_server_packages
+      $java_pakages       = $wowza_server::install::debian::java_packages
     }
 
     default: {
-      fail("wowza not implemented on $operatingsystem $lsbmajdistrelease")
+      fail("wowza_server not implemented on $operatingsystem $lsbmajdistrelease")
     }
   }
 
-  package { $wowza_packages:
+  package { $wowza_server_packages:
     ensure => present,
-    tag    => 'wowza',
+    tag    => 'wowza_server',
   }
 
   package { $java_packages:
@@ -35,5 +35,5 @@ class wowza::install {
 
 
   Package <| tag == 'java' |>  ->
-  Package <| tag == 'wowza' |>
+  Package <| tag == 'wowza_server' |>
 }

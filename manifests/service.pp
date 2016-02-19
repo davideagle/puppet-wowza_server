@@ -1,22 +1,22 @@
 #
-#== Class: wowza::service
+#== Class: wowza_server::service
 #
-# Starts the wowza service
+# Starts the wowza_server service
 #
-class wowza::service { 
-  service { 'WowzaMediaServer':
+class wowza_server::service { 
+  service { 'wowzaMediaServer':
     ensure    => running,
     hasstatus => true,
     enable    => true,
-    tag       => 'wowza',
+    tag       => 'wowza_server',
   }
 
-  Package <| tag == 'wowza' |> ->
-  Service <| tag == 'wowza' |>
+  Package <| tag == 'wowza_server' |> ->
+  Service <| tag == 'wowza_server' |>
 
-  File <| tag == 'wowza' |>    ->
-  Service <| tag == 'wowza' |>
+  File <| tag == 'wowza_server' |>    ->
+  Service <| tag == 'wowza_server' |>
 
-  File <| tag == 'wowza' |>    ~>
-  Service <| tag == 'wowza' |>
+  File <| tag == 'wowza_server' |>    ~>
+  Service <| tag == 'wowza_server' |>
 }

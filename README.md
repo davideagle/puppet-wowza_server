@@ -1,4 +1,4 @@
-puppet-wowza
+puppet-wowza_server
 ============
 
-Wowza management module for puppet 3.1
+wowza_server management module for puppet 3.1

@@ -1,26 +1,26 @@
 #
-#== Class: wowza
+#== Class: wowza_server
 #
-#Installs the wowza package
+#Installs the wowza_server package
 #
-class wowza(
+class wowza_server(
   $licensekey          = undef,
   $licensesource       = undef,
-  $wowza_version       = $wowza::params::wowza_version,
-) inherits wowza::params {
+  $wowza_server_version       = $wowza_server::params::wowza_server_version,
+) inherits wowza_server::params {
 
   if ( ! ($licensekey or $licensesource) ) {
-    fail('Please set a licensekey or licensesource for Wowza!')
+    fail('Please set a licensekey or licensesource for wowza_server!')
   }
   elsif ( $licensekey and $licensesource ) {
-    fail("Wowza:  licensekey or licensesource.  Chose one.")
+    fail("wowza_server:  licensekey or licensesource.  Chose one.")
   }
 
-  include wowza::install
-  include wowza::config
-  include wowza::service
+  include wowza_server::install
+  include wowza_server::config
+  include wowza_server::service
 
-  Class['wowza::install'] ->
-  Class['wowza::config']  ->
-  Class['wowza::service']
+  Class['wowza_server::install'] ->
+  Class['wowza_server::config']  ->
+  Class['wowza_server::service']
 }

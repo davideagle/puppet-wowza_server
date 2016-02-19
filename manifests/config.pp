@@ -1,8 +1,8 @@
 #
-#== Class: wowza::config
+#== Class: wowza_server::config
 #
-#Configures wowza
+#Configures wowza_server
 #
-class wowza::config {
-  include wowza::config::license
+class wowza_server::config {
+  include wowza_server::config::license
 }

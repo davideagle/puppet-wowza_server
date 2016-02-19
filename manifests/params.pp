@@ -1,8 +1,8 @@
-#== Class: wowza::params
+#== Class: wowza_server::params
 #
-#Default parameters for wowza class
-class wowza::params(
-  $wowza_version          = '3.5.0',
+#Default parameters for wowza_server class
+class wowza_server::params(
+  $wowza_server_version          = '3.5.0',
 ) {
 
 }

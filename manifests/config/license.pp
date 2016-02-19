@@ -1,31 +1,31 @@
 #
-#== Class: wowza::config::license
+#== Class: wowza_server::config::license
 #
-#Configures wowza license
+#Configures wowza_server license
 #
-class wowza::config::license {
-  $licensekey          = $::wowza::licensekey
-  $licensesource       = $::wowza::licensesource
+class wowza_server::config::license {
+  $licensekey          = $::wowza_server::licensekey
+  $licensesource       = $::wowza_server::licensesource
 
-  file { '/usr/local/WowzaMediaServer':
+  file { '/usr/local/wowzarMediaServer':
     ensure   => link,
-    target   => "/usr/local/WowzaMediaServer-$wowza_version",
+    target   => "/usr/local/wowzaMediaServer-$wowza_server_version",
     owner    => 'root',
     group    => 'root',
     mode     => '0777',
-    tag      => 'wowza',
+    tag      => 'wowza_server',
   }
 
-  file { '/usr/local/WowzaMediaServer/conf/Server.license':
+  file { '/usr/local/wowzaMediaServer/conf/Server.license':
     ensure   => present,
     source   => $licensesource,
     content  => $licensekey,
     owner    => 'root',
     group    => 'root',
     mode     => '0400',
-    tag      => 'wowza',
+    tag      => 'wowza_server',
   }
 
-  File [ '/usr/local/WowzaMediaServer' ] ->
-  File [ '/usr/local/WowzaMediaServer/conf/Server.license'
+  File [ '/usr/local/wowza_serverMediaServer' ] ->
+  File [ '/usr/local/wowza_serverMediaServer/conf/Server.license'
 }
