@@ -10,13 +10,4 @@ class wowza_server::service {
     enable    => true,
     tag       => 'wowza_server',
   }
-
-  Package <| tag == 'wowza_server' |> ->
-  Service <| tag == 'wowza_server' |>
-
-  File <| tag == 'wowza_server' |>    ->
-  Service <| tag == 'wowza_server' |>
-
-  File <| tag == 'wowza_server' |>    ~>
-  Service <| tag == 'wowza_server' |>
 }
