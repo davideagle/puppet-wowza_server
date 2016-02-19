@@ -4,9 +4,9 @@
 #Installs the wowza_server package
 #
 class wowza_server(
-  $licensekey          = undef,
-  $licensesource       = undef,
-  $wowza_server_version       = $wowza_server::params::wowza_server_version,
+  $licensekey           = undef,
+  $licensesource        = undef,
+  $wowza_server_version = $wowza_server::params::wowza_server_version,
 ) inherits wowza_server::params {
 
   if ( ! ($licensekey or $licensesource) ) {

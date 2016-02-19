@@ -8,14 +8,14 @@ class wowza_server::install {
   case $osfamily {
     'RedHat': {
       include wowza_server::install::redhat
-      $wowza_server_packages     = $wowza_server::install::redhat::wowza_server_packages
-      $java_pakages       = $wowza_server::install::redhat::java_packages
+      $wowza_server_packages = $wowza_server::install::redhat::wowza_server_packages
+      $java_pakages          = $wowza_server::install::redhat::java_packages
     }
 
     'Debian': {
       include wowza_server::install::debian
-      $wowza_server_packages     = $wowza_server::install::debian::wowza_server_packages
-      $java_pakages       = $wowza_server::install::debian::java_packages
+      $wowza_server_packages = $wowza_server::install::debian::wowza_server_packages
+      $java_pakages          = $wowza_server::install::debian::java_packages
     }
 
     default: {
@@ -33,7 +33,4 @@ class wowza_server::install {
     tag     => 'java'
   }
 
-
-  Package <| tag == 'java' |>  ->
-  Package <| tag == 'wowza_server' |>
 }
