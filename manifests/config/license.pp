@@ -7,7 +7,7 @@ class wowza_server::config::license {
   $licensekey          = $::wowza_server::licensekey
   $licensesource       = $::wowza_server::licensesource
 
-  file { '/usr/local/wowzarMediaServer':
+  file { '/usr/local/wowzaMediaServer':
     ensure   => link,
     target   => "/usr/local/wowzaMediaServer-$wowza_server_version",
     owner    => 'root',
