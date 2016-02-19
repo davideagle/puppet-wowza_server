@@ -26,6 +26,6 @@ class wowza_server::config::license {
     tag      => 'wowza_server',
   }
 
-  File [ '/usr/local/wowza_serverMediaServer' ] ->
-  File [ '/usr/local/wowza_serverMediaServer/conf/Server.license'
+  File [ '/usr/local/wowzaMediaServer' ] ->
+  File [ '/usr/local/wowzaMediaServer/conf/Server.license'
 }
