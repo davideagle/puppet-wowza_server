@@ -24,8 +24,6 @@ class wowza_server::config::license {
     group    => 'root',
     mode     => '0400',
     tag      => 'wowza_server',
+    require  => File['/usr/local/wowzaMediaServer'],
   }
-
-  File [ '/usr/local/wowzaMediaServer' ] ->
-  File [ '/usr/local/wowzaMediaServer/conf/Server.license'
 }
